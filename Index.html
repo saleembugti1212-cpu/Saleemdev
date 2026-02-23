@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SaleemDev | Professional Web Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+    --primary:#2563eb;
+    --dark:#0f172a;
+    --light:#ffffff;
+    --gray:#f1f5f9;
+}
+
+body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--gray);
+    color:#111;
+    transition:0.3s;
+    scroll-behavior:smooth;
+}
+
+body.dark{
+    background:var(--dark);
+    color:#fff;
+}
+
+header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    background:#fff;
+    padding:15px 8%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 10px rgba(0,0,0,0.05);
+    z-index:1000;
+}
+
+body.dark header{
+    background:#1e293b;
+}
+
+.logo{
+    font-weight:700;
+    font-size:22px;
+    color:var(--primary);
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:inherit;
+    font-weight:500;
+    position:relative;
+}
+
+nav a::after{
+    content:'';
+    width:0%;
+    height:2px;
+    background:var(--primary);
+    position:absolute;
+    bottom:-5px;
+    left:0;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* Hamburger */
+.menu-toggle{
+    display:none;
+    font-size:26px;
+    cursor:pointer;
+}
+
+/* Dark Mode Button */
+.toggle-btn{
+    cursor:pointer;
+    background:var(--primary);
+    color:#fff;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:14px;
+}
+
+/* HERO */
+.hero{
+    height:100vh;
+    background:linear-gradient(135deg,#2563eb,#4f46e5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+    padding:0 20px;
+}
+
+.hero h1{
+    font-size:45px;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1s forwards;
+}
+
+.hero p{
+    margin:20px 0;
+    opacity:0;
+    transform:translateY(40px);
+    animation:fadeUp 1.4s forwards;
+}
+
+.btn{
+    padding:12px 28px;
+    background:#fff;
+    color:#2563eb;
+    border-radius:30px;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#000;
+    color:#fff;
+}
+
+/* Sections */
+section{
+    padding:100px 8%;
+    text-align:center;
+}
+
+.section-title{
+    font-size:32px;
+    margin-bottom:50px;
+}
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:30px;
+}
+
+.box{
+    background:#fff;
+    padding:30px;
+    border-radius:10px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.05);
+    transition:0.3s;
+    opacity:0;
+    transform:translateY(40px);
+}
+
+body.dark .box{
+    background:#1e293b;
+}
+
+.box:hover{
+    transform:translateY(-10px);
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+    transition:1s;
+}
+
+/* Contact */
+.contact form{
+    max-width:500px;
+    margin:auto;
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact input,.contact textarea{
+    padding:12px;
+    border-radius:5px;
+    border:1px solid #ccc;
+}
+
+.contact button{
+    padding:12px;
+    border:none;
+    background:var(--primary);
+    color:#fff;
+    font-weight:600;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+/* Footer */
+footer{
+    background:#111;
+    color:#fff;
+    padding:20px;
+}
+
+/* Animation */
+@keyframes fadeUp{
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* Responsive */
+@media(max-width:768px){
+    nav{
+        position:absolute;
+        top:70px;
+        right:-100%;
+        flex-direction:column;
+        background:#fff;
+        width:200px;
+        padding:20px;
+        transition:0.3s;
+    }
+
+    body.dark nav{
+        background:#1e293b;
+    }
+
+    nav.active{
+        right:8%;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">SaleemDev</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="nav">
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+        <span class="toggle-btn" onclick="toggleDark()">Dark</span>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div>
+        <h1>Modern Websites That Convert</h1>
+        <p>I build high-converting business websites & landing pages for brands worldwide.</p>
+        <a href="#contact" class="btn">Hire Me</a>
+    </div>
+</section>
+
+<section id="services">
+    <h2 class="section-title">My Services</h2>
+    <div class="services">
+        <div class="box">Professional Landing Pages</div>
+        <div class="box">Business Websites</div>
+        <div class="box">Fiverr Portfolio Design</div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <h2 class="section-title">Portfolio</h2>
+    <div class="services">
+        <div class="box">E-commerce Website</div>
+        <div class="box">Startup Landing Page</div>
+        <div class="box">Agency Website</div>
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <h2 class="section-title">Contact Me</h2>
+    <form>
+        <input type="text" placeholder="Your Name">
+        <input type="email" placeholder="Your Email">
+        <textarea rows="5" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+    </form>
+</section>
+
+<footer>
+    © 2026 SaleemDev | Fiverr Professional Web Developer
+</footer>
+
+<script>
+function toggleDark(){
+    document.body.classList.toggle("dark");
+}
+
+function toggleMenu(){
+    document.getElementById("nav").classList.toggle("active");
+}
+
+window.addEventListener("scroll",()=>{
+    document.querySelectorAll(".box").forEach(el=>{
+        const position = el.getBoundingClientRect().top;
+        const screen = window.innerHeight;
+        if(position < screen - 100){
+            el.classList.add("show");
+        }
+    });
+});
+</script>
+
+</body>
+</html>
